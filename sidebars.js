@@ -60,10 +60,6 @@ const gettingStartedCategory = {
 const textureHandlingCategory = {
     type: 'category',
     label: "Texture Handling",
-    link: {
-      type: 'doc',
-      id: 'features/texture-handling/texture-handling'
-    },
     items: [
       {
         type: 'doc',
@@ -86,10 +82,6 @@ const textureHandlingCategory = {
 const _2dAnimationsCategory = {
   type: 'category',
   label: "2D Animations",
-  link: {
-    type: 'doc',
-    id: 'features/2d-animations/2d-animations'
-  },
   items: [
     {
       type: 'doc',
@@ -102,6 +94,9 @@ const _2dAnimationsCategory = {
   ]
 };
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Fonts" features category
+////////////////////////////////////////////////////////////////////////////////
 const fontsCategory = {
   type: 'category',
   label: 'Fonts',
@@ -113,6 +108,27 @@ const fontsCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Input" features category
+////////////////////////////////////////////////////////////////////////////////
+const inputCategory = {
+  type: 'category',
+  label: 'Input',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/input/keyboardextended/keyboardextended'
+    },
+    {
+      type: 'doc',
+      id: 'features/input/mouseextended/mouseextended'
+    },
+    {
+      type: 'doc',
+      id: 'features/input/inputlistener/inputlistener'
+    }
+  ]
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 /// "User Interface" features category
@@ -134,7 +150,8 @@ const features = {
   items: [
     textureHandlingCategory,
     _2dAnimationsCategory,
-    fontsCategory,
+    fontsCategory,    
+    inputCategory,
     uiCategory
   ]
 };
@@ -146,39 +163,3 @@ module.exports = {
     features
   ]
 };
-
-// module.exports = {
-//   docs: {
-//     'MonoGame.Extended': [
-//       'about/introduction',
-//        'about/principles', 
-//        'about/contributing'
-//       ],
-//     'Getting Started': [
-//       'getting-started/installation-monogame',
-//       'getting-started/installation-kni',
-//       'getting-started/installation-fna'
-//     ],
-//     'Features': [
-//         'graphics':  {
-//         'features/graphics/texture2dregion'
-//       },
-//       'features/tweening/tweening',
-//       'features/tiled/tiled', 
-//       'features/screen-management/screen-management',
-//       'features/scene-graphs/scene-graphs', 
-//       'features/particles/particles',
-//       'features/object-pooling/object-pooling',
-//       'features/input/input',
-//       'features/graphics/graphics',
-//       'features/entities/entities',
-//       'features/collections/collections',
-//       'features/bitmap-font/bitmap-font',
-//       'features/cameras/cameras',
-//       'features/animations/animations',
-//       'features/collision/collision',
-//       'features/contentManager-extensions/contentManager-extensions',
-//       'features/serialization/serialization',
-//     ]
-//   },
-// };

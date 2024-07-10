@@ -28,12 +28,12 @@ The following prerequisites are required when using **MonoGame.Extended** with *
 <Tabs>
   <TabItem value="net-cli" label=".NET Cli" default>
     ```sh
-    dotnet add package KNI.Extended --version 3.9.0-prerelease.7
+    dotnet add package KNI.Extended --version 4.0.0
     ```
   </TabItem>
   <TabItem value="package-manager" label="Package Manager">
     ```sh
-    NuGet\Install-Package KNI.Extended -Version 3.9.0-prerelease.7
+    NuGet\Install-Package KNI.Extended -Version 4.0.0
     ```
     <small>
       This command is intended to be used within the Package Manager Console in Visual Studio, as it uses NuGet module's version of [Install-Package](https://docs.microsoft.com/nuget/reference/ps-reference/ps-ref-install-package)
@@ -41,7 +41,7 @@ The following prerequisites are required when using **MonoGame.Extended** with *
   </TabItem>
   <TabItem value="package-reference" label="Package Reference" default>
     ```xml
-    <PackageReference Include="KNI.Extended" Version="3.9.0-prerelease.7" />
+    <PackageReference Include="KNI.Extended" Version="4.0.0" />
     ```
     <small>
         For projects that support [PackageReference](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files), copy this XML node into the project file to reference the package. 
@@ -50,7 +50,7 @@ The following prerequisites are required when using **MonoGame.Extended** with *
 </Tabs>
 
 :::caution
-**KNI.Extended** is currently being updated and prepped for version 4.0 release.  In the mean time, the current stable version is the **3.9.0-prerelease.7** version shown above.   Please use this version for now even though it is marked prerelease until version 4.0 is released.  For more information, please see the [MonoGame.Extended is Back](/blog/mongame-extended-is-back) blog post.
+**KNI.Extended** is currently being updated and prepped for version 4.0 release.  In the mean time, the current stable version is the **4.0.0** version shown above.   Please use this version for now even though it is marked prerelease until version 4.0 is released.  For more information, please see the [MonoGame.Extended is Back](/blog/mongame-extended-is-back) blog post.
 :::
 
 ## (Optional) Setup MGCB Editor
@@ -62,12 +62,12 @@ To get started first add the `KNI.Extended.Content.Pipeline` NuGet package to yo
 <Tabs>
   <TabItem value="net-cli" label=".NET Cli" default>
     ```sh
-    dotnet add package KNI.Extended.Content.Pipeline --version 3.9.0-prerelease.7
+    dotnet add package KNI.Extended.Content.Pipeline --version 4.0.0
     ```
   </TabItem>
   <TabItem value="package-manager" label="Package Manager">
     ```sh
-    NuGet\Install-Package KNI.Extended.Content.Pipeline -Version 3.9.0-prerelease.7
+    NuGet\Install-Package KNI.Extended.Content.Pipeline -Version 4.0.0
     ```
     <small>
       This command is intended to be used within the Package Manager Console in Visual Studio, as it uses NuGet module's version of [Install-Package](https://docs.microsoft.com/nuget/reference/ps-reference/ps-ref-install-package)
@@ -75,7 +75,7 @@ To get started first add the `KNI.Extended.Content.Pipeline` NuGet package to yo
   </TabItem>
   <TabItem value="package-reference" label="Package Reference" default>
     ```xml
-    <PackageReference Include="KNI.Extended.Content.Pipeline" Version="3.9.0-prerelease.7" />
+    <PackageReference Include="KNI.Extended.Content.Pipeline" Version="4.0.0" />
     ```
     <small>
         For projects that support [PackageReference](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files), copy this XML node into the project file to reference the package. 
@@ -109,17 +109,17 @@ By default, NuGet will download packages to the global packages directory.  The 
 <Tabs>
   <TabItem value="window" label="Windows" default>
     ```
-    %USERPROFILE%\.nuget\packages\kni.extended.content.pipeline\3.9.0-prerelease.7\tools\KNI.Extended.Content.Pipeline.dll
+    %USERPROFILE%\.nuget\packages\kni.extended.content.pipeline\4.0.0\tools\KNI.Extended.Content.Pipeline.dll
     ```
   </TabItem>
   <TabItem value="mac" label="macOS">
     ```sh
-    ~/.nuget/packages/kni.extended.content.pipeline/3.9.0-prerelease.7/tools/KNI.Extended.Content.Pipeline.dll
+    ~/.nuget/packages/kni.extended.content.pipeline/4.0.0/tools/KNI.Extended.Content.Pipeline.dll
     ```
   </TabItem>
   <TabItem value="linux" label="Linux" default>
     ```sh
-    ~/.nuget/packages/kni.extended.content.pipeline/3.9.0-prerelease.7/tools/KNI.Extended.Content.Pipeline.dll
+    ~/.nuget/packages/kni.extended.content.pipeline/4.0.0/tools/KNI.Extended.Content.Pipeline.dll
     ```
   </TabItem>  
 </Tabs>
@@ -140,7 +140,7 @@ The reference we just added to the MGCB Editor is stored as a relative path in t
 ```
 #-------------------------------- References --------------------------------#
 
-/reference:..\..\..\..\..\..\.nuget\packages\kni.extended.content.pipeline\3.9.0-prerelease.7\tools\KNI.Extended.Content.Pipeline.dll
+/reference:..\..\..\..\..\..\.nuget\packages\kni.extended.content.pipeline\4.0.0\tools\KNI.Extended.Content.Pipeline.dll
 ```
 
 Since it is stored as a relative path, this reference can break if

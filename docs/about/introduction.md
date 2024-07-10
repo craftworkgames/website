@@ -12,26 +12,27 @@ Welcome to the **MonoGame.Extended** documentation!
 ## Main Features
 Some of the main features of **MonoGame.Extended** include:
 
-| Feature            | Description |
-| ------------------ | ----------- |
-| Animations         |             |
-| Bitmap Fonts       |             |
-| Cameras            |             |
-| Collections        |             |
-| Collisions         |             |
-| Content Management |             |
-| ECS                |             |
-| Graphics           |             |
-| Input              |             |
-| Object Pooling     |             |
-| Particles          |             |
-| Serialization      |             |
-| Screen Management  |             |
-| Tilemap            |             |
-| Tweening           |             |
+| Feature                                                                                | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Texture Handling](/docs/features/texture-handling/texture2dregion/texture2dregion.md) | Offers utility classes like `Texture2DRegion`, `Texture2DAtlas`, and `Sprite` to better manage using `Texture2D` and rendering 2D sprite graphics        |
+| [2D Animations](/docs/features/2d-animations/spritesheet/spritesheet.md)               | Offers utility class such as `SpriteSheet` and `AniamtedSprite` for creating and managing 2D sprite animations.                                          |
+| [Fonts](/docs/features/fonts/bitmapfont/bitmapfont.md)                                 | Provides support for Bitmap Fonts created with BMFont or Hiero.                                                                                          |
+| [Input](/docs/features/input/keyboardextended/keyboardextended.md)                     | Utility classes that extend the base input states provided by MonoGame as well as an `InputListener` for event based input events instead of poll based. |
+| Cameras                                                                                | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Collections                                                                            | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Collisions                                                                             | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Content Management                                                                     | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| ECS                                                                                    | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Graphics                                                                               | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Object Pooling                                                                         | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Particles                                                                              | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Serialization                                                                          | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Screen Management                                                                      | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Tilemap                                                                                | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
+| Tweening                                                                               | ⚠️ Documentation is being updated, please check back soon.                                                                                                |
 
 ## How to Use These Docs
-On the left side of the screen, you will find the documentation navbar. On mobile devices, this can be accessed by clicking the hamburger menu in the top left. Since **MonoGame.Extended** is a set of utilities and not an engine, the documentation does not need to be read in a specific order. Each section or document is an isolated topic, so you can skip ahead or read only the ones relevant to your use case.
+On the left side of the screen, you will find the documentation navbar. On mobile devices, this can be accessed by clicking the hamburger menu in the top left. Since **MonoGame.Extended** is a set of utilities and not an engine, the documentation does not need to be read in a specific order however the documentation within each category may be ordered to build off of the previous document.. Each section or document is an isolated topic, so you can skip ahead or read only the ones relevant to your use case.
 
 On the right side of the screen, you will see a table of contents that makes it easier to navigate between sections of the current document. On mobile, this can be found as a drop-down at the top of the document page.
 
