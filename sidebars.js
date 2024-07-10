@@ -123,15 +123,7 @@ const uiCategory = {
   items: [
     {
       type: 'doc',
-      id: 'features/ui/gum/gum-doc-1/gum-doc-1'
-    },
-    {
-      type: 'doc',
-      id: 'features/ui/gum/gum-doc-2/gum-doc-2'
-    },
-    {
-      type: 'doc',
-      id: 'features/ui/gum/gum-doc-3/gum-doc-3'
+      id: 'features/ui/gum/gum-forms/gum-forms'
     }
   ]
 }
