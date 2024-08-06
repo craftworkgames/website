@@ -131,6 +131,25 @@ const inputCategory = {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+/// "Camera" features category
+////////////////////////////////////////////////////////////////////////////////
+const cameraCategory = {
+  type: 'category',
+  label: 'Camera',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/camera/camera'
+    },
+    {
+      type: 'doc',
+      id: 'features/camera/orthographic-camera/orthographiccamera'
+    }
+  ]
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
 /// "User Interface" features category
 ////////////////////////////////////////////////////////////////////////////////
 const uiCategory = {
@@ -152,6 +171,7 @@ const features = {
     _2dAnimationsCategory,
     fontsCategory,    
     inputCategory,
+    cameraCategory,
     uiCategory
   ]
 };
