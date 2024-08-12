@@ -6,6 +6,7 @@ description: A virtual 'camera' to view
 ---
 
 import FreehandCamera from './camera.svg'
+import CameraExample from './cameraExample.png'
 
 The purpose of a camera is to provide a quick way show the game world from a different position in space.  The way the camera does this is by using a transformation matrix that changes the way a sprite batch is rendered to the screen.  This allows no movement of objects, and instead, moves the projected image on screen space.
 
@@ -24,15 +25,22 @@ This Class is an abstract class only, use a concrete class like the `Orthographi
 
 ## Why would you want to use a camera?
 
-The short answer is, to reduce complexity for moving what is displayed on the screen.
+The short answer is, to reduce complexity for moving what is displayed on the screen.  
 
-When you have a single screen game, there would be no normal reason for a camera.  
-
-However, most games allow you to move around in the game world.  For this there are 2 main ways you could accomplish this.
-1. Loop over all objects (enemies, players, tiles, backgrounds) in your game, and move their positions, rotations, and scale them.
+Most games allow you to move around in the game world.  For this there are 2 main ways you could accomplish this.
+1. Loop over all objects (enemies, players, tiles, backgrounds) in your game, and move their positions, rotations, and scale them.  Every frame...
 1. or... leave them where they are at, but use math (Matrix multiplication) to "project" the sprites to a new location (Camera).
 
-The 2nd option is where the camera object comes in.  The camera follows the player (or another entity), displaying the world around the entity. The world is not moved though, only the entity and the camera move.
+The 2nd option is where the camera object comes in.  The camera can follow the player (or another entity), displaying the world around the entity. The world is not moved though, only the entity and the camera move.
+
+<figure>
+    <img src={CameraExample} style={{width: '100%'}}/>
+    <figcaption>
+        <small>
+            Overview of conceptual layers of the camera; Licensed for free and commercial use.
+        </small>
+    </figcaption>
+</figure>
 
 ## What can you do with the camera?
 
