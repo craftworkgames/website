@@ -157,5 +157,5 @@ _screenPosition = _camera.WorldToScreen(new Vector2(player.X, player.Y));
 
 ## Further Reading
 
-[Matrix Basics](https://stevehazen.wordpress.com/2010/02/15/matrix-basics-how-to-step-away-from-storing-an-orientation-as-3-angles/)
-[Orthographic Camera](https://en.wikipedia.org/wiki/Orthographic_projection)
+ - [Matrix Basics](https://stevehazen.wordpress.com/2010/02/15/matrix-basics-how-to-step-away-from-storing-an-orientation-as-3-angles/)
+ - [Orthographic Camera](https://en.wikipedia.org/wiki/Orthographic_projection)
