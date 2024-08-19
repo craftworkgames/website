@@ -148,6 +148,20 @@ const cameraCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Collections" features category
+////////////////////////////////////////////////////////////////////////////////
+const collectionsCategory = {
+  type: 'category',
+  label: 'Collections',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/collections/collections'
+    }
+  ]
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /// "User Interface" features category
@@ -172,6 +186,7 @@ const features = {
     fontsCategory,    
     inputCategory,
     cameraCategory,
+    collectionsCategory,
     uiCategory
   ]
 };
