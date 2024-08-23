@@ -58,6 +58,16 @@ This happens again when we use `Remove` to look for a specific VALUE in the bag,
 ## Deque
 Represents a collection of objects in which elements can be added to or removed either from the front or back. See [double ended queue](https://en.wikipedia.org/wiki/Double-ended_queue).
 
+### Deque Functionality and Behavior
+
+The front of the queue is the first item removed when you `Pop` an item off (The left of the list), where-as the back is the last item removed with `Pop` (The right of the list).
+```
+[3, 6, 8, 9, 0, 5, 32]
+```
+
+In the above list of elements, the 3 is the back, and the 32 is the front.
+
+### Deque Example
 ```csharp
 var deque = new Deque<int>();
 deque.AddToBack(1);
