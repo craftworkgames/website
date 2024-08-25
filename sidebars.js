@@ -164,6 +164,20 @@ const collectionsCategory = {
 
 
 ////////////////////////////////////////////////////////////////////////////////
+/// "ObjectPool" features category
+////////////////////////////////////////////////////////////////////////////////
+const objectPoolCategory = {
+  type: 'category',
+  label: 'Object Pooling',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/object-pooling/object-pooling'
+    }
+  ]
+}
+
+////////////////////////////////////////////////////////////////////////////////
 /// "User Interface" features category
 ////////////////////////////////////////////////////////////////////////////////
 const uiCategory = {
@@ -187,6 +201,7 @@ const features = {
     inputCategory,
     cameraCategory,
     collectionsCategory,
+    objectPoolCategory,
     uiCategory
   ]
 };

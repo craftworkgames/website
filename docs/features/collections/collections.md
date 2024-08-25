@@ -94,9 +94,17 @@ Result
 ```
 
 
-## keyedCollection
+## Keyed Collection (keyedCollection)
 
-`KeyedCollection` is a wrapper around the `Dictionary` class where the key is obtained by a delegate.
+`KeyedCollection` is a wrapper around the `Dictionary` class where the key is obtained by a [delegate](https://www.tutorialspoint.com/csharp/csharp_delegates.htm).
+
+This allows you to use a function as the key.  While this could be any function, a good example would be using a property of the class in the collection as the key, like an ID field.
+
+### Keyed Collection Functionality and Behavior
+
+ - The delegate function needs to return a unique value for the key since it will be used as the dictionaries key.
+ - Simplify adding an Entity to a dictionary by a key value that's inside the Entity.
+ - Provide helper methods to search for items in the collection `TryGetValue`
 
 ```csharp
 var keyedCollection = new KeyedCollection<int, MyEntity>(e => e.Id);
@@ -108,8 +116,9 @@ keyedCollection.TryGetValue(1, out MyEntity entity); // gets Player1
 
 ## Object Pooling
 
-An `ObjectPool<T>` allows reuse of memory for a group of items to avoid Garbage Collection.
-More information is in the [Object Pooling](../object-pooling/object-pooling.md) documentation.
+Pooling of Objects allows reuse of memory for a group of items to avoid Garbage Collection.  These are a bit more advanced, and an entire page is dedicated to them.
+
+More information is in the [Object Pooling](docs/features/object-pooling/object-pooling.md) documentation.
 
 ## ObservableCollection
 
