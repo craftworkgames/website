@@ -12,9 +12,12 @@ Collections are more advanced than a simple array or list, and each one can prov
 
 .NET has many default Collection types (List, Dictionary, Queue, Stack, and many more).  These are a few additional collections.
 
-## Extensions to existing .NET collections
+## General requirements for all collections
 
-`MonoGame.Extended` contains `Collections` extensions to the C# collections that are useful for game programming.  An [extension](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) in .NET is essentially just adding additional functionality to an existing Type Class, without needing to re-compile the source code for .NET 8.0.  Read more about them in the link above.
+All of these require adding the using directive for `MonoGame.Extended.Collections` in your file.
+```csharp
+using MonoGame.Extended.Collections;
+```
 
 ## Bag
 
@@ -106,6 +109,22 @@ This allows you to use a function as the key.  While this could be any function,
  - Simplify adding an Entity to a dictionary by a key value that's inside the Entity.
  - Provide helper methods to search for items in the collection `TryGetValue`
 
+Lets create an object we can use in the keyed collection.
+```csharp
+public class MyEntity 
+{
+    public int Id {get; set;}
+    public string Name {get; set;}
+
+    public void MyEntity(int id, string name)
+    {
+        this.Id = id;
+        this.Name = name;
+    }
+}
+```
+
+Now lets use that in the `KeyedCollection`.
 ```csharp
 var keyedCollection = new KeyedCollection<int, MyEntity>(e => e.Id);
 keyedCollection.Add(new MyEntity {Id = 1, Name = "Player1"});
@@ -113,6 +132,8 @@ keyedCollection.Add(new MyEntity {Id = 2, Name = "Player2"});
 
 keyedCollection.TryGetValue(1, out MyEntity entity); // gets Player1
 ```
+
+Above we created a new KeyedCollection using the `Id` field as the key, and storing the `MyEntity` as the value.  In the example we added two new instances for MyEntity, and then retrieved an item from the collection using the ID field.
 
 ## Object Pooling
 
@@ -124,10 +145,44 @@ More information is in the [Object Pooling](docs/features/object-pooling/object-
 
 `ObservableCollection<T>` manages an `IList<T>` of items firing `ItemAdded`, `ItemRemoved`, `Clearing`, and `Cleared` events when the collection is changed.
 
-## ListExtensions
+## Extensions to existing .NET collections
 
-Adds `Shuffle(Random)` to all `IList<>` classes.
+`MonoGame.Extended` contains `Collections` extensions to the C# collections that are useful for game programming.  An [extension](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/extension-methods) in .NET is essentially just adding additional functionality to an existing Type Class, without needing to re-compile the source code for .NET 8.0.  Read more about them in the link above.
 
-## DictionaryExtensions
+### ListExtensions
 
-Extends all `Dictionary<>` classes with `GetValueOrDefault(key, default)`.
+Adds `Shuffle(Random)` to all `IList<>` classes.  This extension requires that you pass in an instance of the `System.Random` class.
+
+```csharp
+// .... setup example 
+using System;
+using System.Collections.Generic;
+
+Random random = new Random();
+List<int> nums = new List<int>{1, 2, 3, 4, 5};
+// .... end setup example 
+
+using MonoGame.Extended.Collections;
+// The Extension method for List `Shuffle` called
+nums.Shuffle(random);
+```
+
+The list `nums` will now be randomly shuffled.  We didn't have to recompile .NET either.
+
+### DictionaryExtensions
+
+Extends all `Dictionary<>` classes with `GetValueOrDefault(key, default)`.  It allows you to specify a default to return when the key is not found.
+
+```csharp
+// .... setup example 
+using System.Collections.Generic;
+
+Dictionary<string, int> zipCodeLookupByCity = new Dictionary<string, int>();
+// .... end setup example 
+
+using MonoGame.Extended.Collections;
+// The Extension method for dictionary to return a default if no key found
+int zipCode = zipCodeLookupByCity.GetValueOrDefault('typo city name', 90210);
+```
+
+The above code has a made up situation where we want to be able to lookup zipcodes (Postal Codes) by the city name.  In this case, someone typed the city name wrong, but we want to always default the zip code to Beverly Hills zip code of 90210.

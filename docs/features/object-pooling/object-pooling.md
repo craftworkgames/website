@@ -111,8 +111,8 @@ The following is a code snippet with comments demonstrating how to implement the
 class EnemyPoolable : IPoolable
 {
     // Example attributes
-    public int Health {get; set;};
-    public float Position {get; set;};
+    public int Health {get; set;}
+    public float Position {get; set;}
 
     // ... Your other Enemy class code here
 
