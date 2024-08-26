@@ -116,7 +116,9 @@ public class MyEntity
     public int Id {get; set;}
     public string Name {get; set;}
 
-    public void MyEntity(int id, string name)
+    public MyEntity() { }
+
+    public MyEntity(int id, string name)
     {
         this.Id = id;
         this.Name = name;
@@ -127,7 +129,7 @@ public class MyEntity
 Now lets use that in the `KeyedCollection`.
 ```csharp
 var keyedCollection = new KeyedCollection<int, MyEntity>(e => e.Id);
-keyedCollection.Add(new MyEntity {Id = 1, Name = "Player1"});
+keyedCollection.Add(new MyEntity (1, "Player1"));
 keyedCollection.Add(new MyEntity {Id = 2, Name = "Player2"});
 
 keyedCollection.TryGetValue(1, out MyEntity entity); // gets Player1
@@ -144,6 +146,120 @@ More information is in the [Object Pooling](docs/features/object-pooling/object-
 ## ObservableCollection
 
 `ObservableCollection<T>` manages an `IList<T>` of items firing `ItemAdded`, `ItemRemoved`, `Clearing`, and `Cleared` events when the collection is changed.
+
+This allows you to monitor when items are added, removed, being clearing, or cleared.  You could then perform an action whenever this happens.  If you're familiar with databases, this would be similar to insert/update/delete triggers.
+
+It's for a more [event-driven architecture](https://en.wikipedia.org/wiki/Event-driven_programming) common in GUIs.
+
+### ObservableCollection Example with Methods
+
+In this first example, we'll create a blank `ObservableCollection<int>`, then add, remove, and clear from it to demonstrate the Event Handlers.
+```csharp
+ObservableCollection<int> observableCollection = new ObservableCollection<int>();
+```
+
+Next, we need to create some methods that will handle the events
+```csharp
+public void ItemAddedWatcher(object sender, ItemEventArgs<int> e)
+{
+    Debug.Print($"Item Added: {e.Item}");
+}
+
+public void ItemRemovedWatcher(object sender, ItemEventArgs<int> e)
+{
+    Debug.Print($"Item Removed: {e.Item}");
+}
+
+public void WatchedListClearing(object sender, EventArgs args)
+{
+    Debug.Print("List is clearing....");
+}
+
+public void WatchedListCleared(object sender, EventArgs args)
+{
+    Debug.Print("List is now cleared!");
+}
+```
+
+Now we need to wire-up (associate) the event handlers to the methods so they are connected.
+```csharp
+observableCollection.ItemAdded += ItemAddedWatcher;
+observableCollection.ItemRemoved += ItemRemovedWatcher;
+observableCollection.Clearing += WatchedListClearing;
+observableCollection.Cleared += WatchedListCleared;
+```
+
+Finally we need to manipulate the ObservableCollection so we can watch the events get triggered
+```csharp
+observableCollection.Add(1);
+observableCollection.Add(2);
+observableCollection.Add(77);
+observableCollection.Add(3);
+observableCollection.Remove(2);
+observableCollection.Add(42);
+observableCollection.Clear();
+```
+
+The output should be
+```
+Item Added: 1
+Item Added: 2
+Item Added: 77
+Item Added: 3
+Item Removed: 2
+Item Added: 42
+List is clearing....
+List is now cleared!
+```
+
+### ObservableCollection Example with Anonymous functions
+
+In this example we will pass in an already existing collection (A list), and use `Anonymous functions` in-line.
+
+Create a list, and then pass it to an ObservableCollection with the same data type.
+```csharp
+List<int> sourceList = new List<int> {1, 2, 3, 55, 88, 13, 23, 42 };
+ObservableCollection<int> observableCollectionAlt = new ObservableCollection<int>(sourceList);
+```
+
+Wire-up (associate) all the event handlers to the anonymous functions
+```csharp       
+observableCollectionAlt.ItemAdded += (sender, e) =>
+{
+    Debug.Print($"Item Added: {e.Item}");
+};
+observableCollectionAlt.ItemRemoved += (sender, e) =>
+{
+    Debug.Print($"Item Removed: {e.Item}");
+};
+observableCollectionAlt.Clearing += (sender, args) =>
+{
+    Debug.Print("List is clearing....");
+};
+observableCollectionAlt.Cleared += (sender, args) =>
+{
+    Debug.Print("List is now cleared!");
+};
+```
+
+Perform some changes to the ObservableCollection and you'll see debug prints.
+```csharp
+observableCollectionAlt.Add(7);
+observableCollectionAlt.Add(412);
+observableCollectionAlt.Remove(88);
+observableCollectionAlt.RemoveAt(3);
+observableCollectionAlt.Clear();
+```
+
+This will print out the following:
+```
+Item Added: 7
+Item Added: 412
+Item Removed: 88
+Item Removed: 55
+List is clearing....
+List is now cleared!
+```
 
 ## Extensions to existing .NET collections
 
