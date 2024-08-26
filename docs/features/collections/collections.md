@@ -97,7 +97,7 @@ Result
 ```
 
 
-## Keyed Collection (keyedCollection)
+## KeyedCollection
 
 `KeyedCollection` is a wrapper around the `Dictionary` class where the key is obtained by a [delegate](https://www.tutorialspoint.com/csharp/csharp_delegates.htm).
 
