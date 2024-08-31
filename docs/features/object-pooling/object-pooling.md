@@ -23,16 +23,16 @@ Using a `Pool<T>`/`ObjectPool<T>` without first profiling for the need of one ma
 
 This is a simplified Pooling system that uses a [`Deque`](/docs/features/collections/collections.md#deque) for the dead objects.  Since this collection doesn't contain a way to track the alive objects, you'll need to do that yourself.  This example uses a List to keep track of the alive objects.
 
-### Creating an example Enemy class for Pool
+### Create example Enemy class for Pool
 This class is just an example for demonstration purposes.
 
 ```csharp
 public class Enemy 
 {
-    public int Health {get; set;};
-    public float Position {get; set;};
+    public int Health {get; set;}
+    public float Position {get; set;}
 
-    public void Enemy(){ }
+    public Enemy(){ }
 
     public void Reset()
     {

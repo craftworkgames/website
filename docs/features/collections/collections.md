@@ -298,7 +298,7 @@ Dictionary<string, int> zipCodeLookupByCity = new Dictionary<string, int>();
 
 using MonoGame.Extended.Collections;
 // The Extension method for dictionary to return a default if no key found
-int zipCode = zipCodeLookupByCity.GetValueOrDefault('typo city name', 90210);
+int zipCode = zipCodeLookupByCity.GetValueOrDefault("typo city name", 90210);
 ```
 
 The above code has a made up situation where we want to be able to lookup zipcodes (Postal Codes) by the city name.  In this case, someone typed the city name wrong, but we want to always default the zip code to Beverly Hills zip code of 90210.
