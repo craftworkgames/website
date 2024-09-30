@@ -233,6 +233,20 @@ const entitiesCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Particles" category
+////////////////////////////////////////////////////////////////////////////////
+const particlesCategory = {
+  type: 'category',
+  label: 'Particles',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/particles/particles'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
@@ -247,7 +261,8 @@ const features = {
     uiCategory,
     collisionCategory,
     contentManagerCategory,
-    entitiesCategory
+    entitiesCategory,
+    particlesCategory
   ]
 };
 

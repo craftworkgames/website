@@ -2,17 +2,15 @@
 id: particles
 title: Particles
 sidebar_label: Particles
+description: Particle engine, ported from Mercury Particle Engine.
 ---
+
+:::warning[Not up to date]
+This page **is not** up to date for MonoGame.Extended `@mgeversion@`.  If you would like to contribute to updating this document, please [create a new PR](https://github.com/craftworkgames/craftworkgames.github.io/pulls)
+:::
 
 MonoGame.Extended.Particles is ported from the Mercury Particle Engine.
 A particle engine helps you simulate phenomena, which are otherwise very hard to reproduce with conventional rendering techniques. examples include replicating fire, explosions, smoke, moving water, sparks.
-
-## Installation
-
-[MonoGame.Extended.Particles](https://www.nuget.org/packages/MonoGame.Extended.Particles) is distributed via a NuGet package. You can add the NuGet package to your C# project through your IDE of choice (Visual Studio, Xamarin Studio, Rider, etc) or through the Command Line Interface (CLI) using the dotnet command.
-```
-dotnet add package MonoGame.Extended.Particles
-```
 
 ## Quick start
 
