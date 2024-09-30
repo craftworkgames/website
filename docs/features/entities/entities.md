@@ -2,16 +2,14 @@
 id: entities
 title: Entities
 sidebar_label: Entities
+description: High performance, Artemis based, Entity Component System (ECS)
 ---
 
+:::warning[Not up to date]
+This page **is not** up to date for MonoGame.Extended `@mgeversion@`.  If you would like to contribute to updating this document, please [create a new PR](https://github.com/craftworkgames/craftworkgames.github.io/pulls)
+:::
+
 The Entities package is a modern high performance Artemis based Entity Component System. Many of the features found in this implementation were inspired by artemis-odb. Although, many others were also studied during development. As you'll see the systems are designed to feel familar to MonoGame developers.
-
-## Installation
-
-[MonoGame.Extended.Entities](https://www.nuget.org/packages/MonoGame.Extended.Entities) is distributed via a NuGet package. You can add the NuGet package to your C# project through your IDE of choice (Visual Studio, Xamarin Studio, Rider, etc) or through the Command Line Interface (CLI) using the dotnet command.
-```
-dotnet add MonoGame.Extended.Entities
-```
 
 ## What is an ECS?
 

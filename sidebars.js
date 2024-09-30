@@ -219,6 +219,20 @@ const contentManagerCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Entities" category
+////////////////////////////////////////////////////////////////////////////////
+const entitiesCategory = {
+  type: 'category',
+  label: 'Entities',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/entities/entities'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
@@ -232,7 +246,8 @@ const features = {
     objectPoolCategory,
     uiCategory,
     collisionCategory,
-    contentManagerCategory
+    contentManagerCategory,
+    entitiesCategory
   ]
 };
 
