@@ -2,17 +2,14 @@
 id: tweening
 title: Tweening
 sidebar_label: Tweening
+description: Tweening to generate values for position, size, color, opacity, etc, in intermediate frames giving the illusion of animation.
 ---
 
+:::warning[Not up to date]
+This page **is not** up to date for MonoGame.Extended `@mgeversion@`.  If you would like to contribute to updating this document, please [create a new PR](https://github.com/craftworkgames/craftworkgames.github.io/pulls)
+:::
+
 Inbetweening, or just tweening for short, allows you to generate values for position, size, color, opacity, etc in intermediate frames giving the illusion of animation.
-
-## Installation
-
-`MonoGame.Extended.Tweening` is distributed via NuGet packages. You can add the NuGet package to your C# project through your IDE of choice (Visual Studio, Xamarin Studio, Rider, etc) or through the Command Line Interface (CLI) using the dotnet command.
-
-```
-dotnet add package MonoGame.Extended.Tweening
-```
 
 ## Example
 

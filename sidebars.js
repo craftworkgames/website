@@ -289,6 +289,20 @@ const serializationCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Tweening" category
+////////////////////////////////////////////////////////////////////////////////
+const tweeningCategory = {
+  type: 'category',
+  label: 'Tweening',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/tweening/tweening'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
