@@ -1,5 +1,9 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 
+const globalVariables = {
+  'mgeversion': '4.0.3'
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'MonoGame.Extended',
@@ -37,6 +41,17 @@ const config = {
       }),
     ],
   ],
+
+  markdown: {
+    preprocessor: ({filePath, fileContent}) => {
+      var key = '';
+      var found = false;
+      for(key in globalVariables) {
+        fileContent = fileContent.replaceAll(`@${key}@`, globalVariables[key]);
+      }
+      return fileContent;
+    }
+  },
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
