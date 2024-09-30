@@ -247,6 +247,20 @@ const particlesCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Scene Graphs" category
+////////////////////////////////////////////////////////////////////////////////
+const sceneGraphsCategory = {
+  type: 'category',
+  label: 'Scene Graphs',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/scene-graphs/scene-graphs'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
@@ -262,7 +276,8 @@ const features = {
     collisionCategory,
     contentManagerCategory,
     entitiesCategory,
-    particlesCategory
+    particlesCategory,
+    sceneGraphsCategory
   ]
 };
 

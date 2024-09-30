@@ -2,7 +2,12 @@
 id: scene-graphs
 title: Scene Graphs
 sidebar_label: Scene Graphs
+description: Used to manage the spatial representation of objects.
 ---
+
+:::warning[Not up to date]
+This page **is not** up to date for MonoGame.Extended `@mgeversion@`.  If you would like to contribute to updating this document, please [create a new PR](https://github.com/craftworkgames/craftworkgames.github.io/pulls)
+:::
 
 The `SceneGraph` is used to manage the spatial representation of objects. It is a tree structure in which the transformations of the parent nodes are applied to the child nodes.
 
@@ -12,13 +17,6 @@ The `SceneGraph` is used to manage the spatial representation of objects. It is 
 ### Diagram
 ![Diagram](diagram.png)
 
-## Installation
-
-`SceneGraphs` is available in the `MonoGame.Extended.SceneGraphs` library.
-[MonoGame.Extended.SceneGraphs](https://www.nuget.org/packages/MonoGame.Extended.SceneGraphs) is distributed via a NuGet package. You can add the NuGet package to your C# project through your IDE of choice (Visual Studio, Xamarin Studio, Rider, etc) or through the Command Line Interface (CLI) using the dotnet command.
-```
-dotnet add package MonoGame.Extended.SceneGraphs
-```
 
 ## Usage
 
