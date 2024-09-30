@@ -200,7 +200,7 @@ const collisionCategory = {
   items: [
     {
       type: 'doc',
-      id: 'features/collisions/collision'
+      id: 'features/collision/collision'
     }
   ]
 }
