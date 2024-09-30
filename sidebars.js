@@ -275,6 +275,20 @@ const screenManagement = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Serialization" category
+////////////////////////////////////////////////////////////////////////////////
+const serializationCategory = {
+  type: 'category',
+  label: 'Serialization',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/serialization/serialization'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
