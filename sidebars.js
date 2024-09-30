@@ -303,6 +303,20 @@ const tweeningCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Tiled" category
+////////////////////////////////////////////////////////////////////////////////
+const tiledCategory = {
+  type: 'category',
+  label: 'Tiled',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/tiled/tiled'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
