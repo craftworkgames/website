@@ -5,6 +5,10 @@ title: Gum Forms
 description: An example document for gum
 ---
 
+:::tip[Up to date]
+This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find outdated information, [please open an issue](https://github.com/craftworkgames/craftworkgames.github.io/issues).
+:::
+s
 Gum Forms provides a collection of flexible, fully customizable controls which can be added to your project with just a few lines of code. This document provides setup and an introduction to using Gum forms controls. For full documentation see the [Gum Forms documentation](https://docs.flatredball.com/gum/monogame/gum-forms).
 
 ## Setup

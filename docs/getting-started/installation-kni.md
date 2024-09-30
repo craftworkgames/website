@@ -6,6 +6,10 @@ sidebar_label: Installation (KNI)
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::tip[Up to date]
+This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find outdated information, [please open an issue](https://github.com/craftworkgames/craftworkgames.github.io/issues).
+:::
+
 The following article details the steps necessary to get **MonoGame.Extended** installed and setup in your **KNI** project.  **MonoGame.Extended** can be used with either [**MonoGame**](https://github.com/monogame/monogame), [**KNI**](https://github.com/kniEngine/kni), or [**KNI**](https://github.com/FNA-XNA/FNA).  This article wil detail how to setup and install **MonoGame.Extended** with an existing **KNI** project.
 
 :::note
@@ -28,12 +32,12 @@ The following prerequisites are required when using **MonoGame.Extended** with *
 <Tabs>
   <TabItem value="net-cli" label=".NET Cli" default>
     ```sh
-    dotnet add package KNI.Extended --version 4.0.0
+    dotnet add package KNI.Extended --version @mgeversion@
     ```
   </TabItem>
   <TabItem value="package-manager" label="Package Manager">
     ```sh
-    NuGet\Install-Package KNI.Extended -Version 4.0.0
+    NuGet\Install-Package KNI.Extended -Version @mgeversion@
     ```
     <small>
       This command is intended to be used within the Package Manager Console in Visual Studio, as it uses NuGet module's version of [Install-Package](https://docs.microsoft.com/nuget/reference/ps-reference/ps-ref-install-package)
@@ -41,7 +45,7 @@ The following prerequisites are required when using **MonoGame.Extended** with *
   </TabItem>
   <TabItem value="package-reference" label="Package Reference" default>
     ```xml
-    <PackageReference Include="KNI.Extended" Version="4.0.0" />
+    <PackageReference Include="KNI.Extended" Version="@mgeversion@" />
     ```
     <small>
         For projects that support [PackageReference](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files), copy this XML node into the project file to reference the package. 

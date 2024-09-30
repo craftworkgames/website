@@ -4,6 +4,10 @@ title: KeyboardExtended
 sidebar_label: KeyboardExtended
 ---
 
+:::tip[Up to date]
+This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find outdated information, [please open an issue](https://github.com/craftworkgames/craftworkgames.github.io/issues).
+:::
+
 `KeyboardExtended` is an extension of the `Microsoft.Xna.Framework.Input.Keyboard` class. Unlike the default MonoGame one, `KeyboardExtended` will internally track both the keyboard state of the previous frame and the keyboard state of the current frame.  This allows for easy comparisons between the previous and current state to check for single frame key presses.
 
 `KeyboardExtended` also contains the `KeyboardExtended.GetState()` method which returns back a `KeyboardStateExtended` struct.  This struct provides the standard utility methods of checking if a key is down or up, but also extends this functionality with methods for checking for single frame key presses.

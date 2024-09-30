@@ -4,6 +4,10 @@ title: Collections
 sidebar_label: Collections
 ---
 
+:::tip[Up to date]
+This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find outdated information, [please open an issue](https://github.com/craftworkgames/craftworkgames.github.io/issues).
+:::
+
 ## What is a collection?
 
 A collection is a data structure with functionality built around it.  Think about a collection as a grouping of similar things.  All the enemies in a game, the items in the inventory, the textures being drawn, images in an animation, or bullets on the screen.

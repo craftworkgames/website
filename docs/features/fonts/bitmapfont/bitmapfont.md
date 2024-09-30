@@ -4,6 +4,10 @@ title: Bitmap Font
 sidebar_label: Bitmap Font
 ---
 
+:::tip[Up to date]
+This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find outdated information, [please open an issue](https://github.com/craftworkgames/craftworkgames.github.io/issues).
+:::
+
 This is an overview of the `BitmapFont` feature in **MonoGame.Extended**.  `BitmapFonts` are font files (`.fnt`) created using the [AngelCode BMFont](https://www.angelcode.com/products/bmfont/) format. You can generate these files with tools like the [BMFont](https://www.angelcode.com/products/bmfont/) tool or alternatives such as [libGDX Hiero](https://libgdx.com/wiki/tools/hiero).
 
 In this article, we'll explore why `BitmapFonts` are a great alternative to the built-in `SpriteFont` in MonoGame. Whether you're facing limitations with SpriteFont or seeking more control over your game fonts, `BitmapFonts` provide a robust solution.

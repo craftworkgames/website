@@ -9,6 +9,10 @@ image: ./cards.png
 import PlayingCards from './cards.png'
 import ResultScreenShot from './result.png'
 
+:::tip[Up to date]
+This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find outdated information, [please open an issue](https://github.com/craftworkgames/craftworkgames.github.io/issues).
+:::
+
 In the [previous](../texture2dregion/texture2dregion.md) article we discussed what a `Texture2DRegion` is.  When you combine all the texture regions into a single collection, this is called a texture atlas. By using a texture atlas it gives us an easy way to create and manage our collection of regions
 
 Let's take a look at the image of all the cards again.
