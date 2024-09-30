@@ -205,6 +205,20 @@ const collisionCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "ContentManager" category
+////////////////////////////////////////////////////////////////////////////////
+const contentManagerCategory = {
+  type: 'category',
+  label: 'ContentManager',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/contentmanager/contentManager-extensions'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
@@ -217,7 +231,8 @@ const features = {
     collectionsCategory,
     objectPoolCategory,
     uiCategory,
-    collisionCategory
+    collisionCategory,
+    contentManagerCategory
   ]
 };
 
