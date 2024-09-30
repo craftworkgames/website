@@ -191,6 +191,20 @@ const uiCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Collisions" category
+////////////////////////////////////////////////////////////////////////////////
+const collisionCategory = {
+  type: 'category',
+  label: 'Collisions',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/collisions/collision'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
@@ -202,7 +216,8 @@ const features = {
     cameraCategory,
     collectionsCategory,
     objectPoolCategory,
-    uiCategory
+    uiCategory,
+    collisionCategory
   ]
 };
 

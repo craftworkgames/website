@@ -1,16 +1,13 @@
 ---
 id: collision
-title: Collision
 sidebar_label: Collision
+title: Collision
+description: 2D grid-based collision system.
 ---
-The MonoGame.Extended.Collisions library contains a 2D grid-based collision system.
 
-## Installation
-
-[MonoGame.Extended.Collisions](https://www.nuget.org/packages/MonoGame.Extended.Collisions) is distributed via a NuGet package. You can add the NuGet package to your C# project through your IDE of choice (Visual Studio, Xamarin Studio, Rider, etc) or through the Command Line Interface (CLI) using the dotnet command.
-```
-dotnet add MonoGame.Extended.Collisions
-```
+:::warning[Not up to date]
+This page **is not** up to date for MonoGame.Extended `@mgeversion@`.  If you would like to contribute to updating this document, please [create a new PR](https://github.com/craftworkgames/craftworkgames.github.io/pulls)
+:::
 
 ## Usage
 
