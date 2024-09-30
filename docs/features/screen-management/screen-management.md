@@ -2,7 +2,12 @@
 id: screen-management
 title: Screen Management
 sidebar_label: Screen Management
+description: Screen management to split your game into multiple screens.
 ---
+
+:::warning[Not up to date]
+This page **is not** up to date for MonoGame.Extended `@mgeversion@`.  If you would like to contribute to updating this document, please [create a new PR](https://github.com/craftworkgames/craftworkgames.github.io/pulls)
+:::
 
 The `ScreenManager` helps you to split your game into multiple `GameScreens` with their own `Dispose()`,
 `Initialize()`, 
@@ -10,14 +15,6 @@ The `ScreenManager` helps you to split your game into multiple `GameScreens` wit
 `UnloadContent()`, 
 `Update(GameTime gameTime)`, 
 and, `Draw(GameTime gameTime)` methods.
-
-## Installation
-
-The `ScreenManager` and `GameScreen` classes are available in the `MonoGame.Extended` library.
-[MonoGame.Extended](https://www.nuget.org/packages/MonoGame.Extended) is distributed via a NuGet package. You can add the NuGet package to your C# project through your IDE of choice (Visual Studio, Xamarin Studio, Rider, etc) or through the Command Line Interface (CLI) using the dotnet command.
-```
-dotnet add package MonoGame.Extended
-```
 
 ## Usage
 

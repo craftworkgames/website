@@ -261,6 +261,20 @@ const sceneGraphsCategory = {
   ]
 }
 
+////////////////////////////////////////////////////////////////////////////////
+/// "Screen Management" category
+////////////////////////////////////////////////////////////////////////////////
+const screenManagement = {
+  type: 'category',
+  label: 'Screen Management',
+  items: [
+    {
+      type: 'doc',
+      id: 'features/screen-management/screen-management'
+    }
+  ]
+}
+
 const features = {
   type: 'category',
   label: 'Features',
