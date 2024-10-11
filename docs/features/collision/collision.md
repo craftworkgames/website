@@ -13,7 +13,7 @@ This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find o
 
 To use the Collision code, you need to perform the following 4 steps:
 1. Create a class that implements the `ICollisionActor` interface.
-1. Implement the `OnCollision` method in your class.  This defines what happens when something his your object.
+1. Implement the `OnCollision` method in your class.  This defines what happens when something hits your object.
 1. Create a `CollisionComponent` instance defining the bounds of your world.
 1. `Insert` an instance of your class into the CollisionComponent.
 
