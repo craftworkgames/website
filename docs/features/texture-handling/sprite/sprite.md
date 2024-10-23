@@ -54,9 +54,7 @@ private Sprite _aceOfClubsSprite;
 protected override void LoadContent()
 {
     Texture2D cardsTexture = Content.Load<Texture2D>("cards");
-
-    _atlas = new Texture2DAtlas(cardsTexture);
-    _atlas.CreateRegion(11, 68, 42, 60);
+    _atlas = Texture2DAtlas.Create("Atlas/Cards", cardsTexture, 32, 32);
 
     // highlight-next-line
     _aceOfClubsSprite = _atlas.CreateSprite(regionIndex: 12);
@@ -121,9 +119,7 @@ private Sprite _aceOfSpadesSprite;
 protected override void LoadContent()
 {
     Texture2D cardsTexture = Content.Load<Texture2D>("cards");
-
-    _atlas = new Texture2DAtlas(cardsTexture);
-    _atlas.CreateRegion(11, 68, 42, 60);
+    _atlas = Texture2DAtlas.Create("Atlas/Cards", cardsTexture, 32, 32);
 
     _aceOfClubsSprite = _atlas.CreateSprite(regionIndex: 12);
     // highlight-next-line
