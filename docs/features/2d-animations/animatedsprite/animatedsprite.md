@@ -180,7 +180,9 @@ protected override void Draw(GameTime gameTime)
 
     _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
     // highlight-next-line
-    _spriteBatch.Draw(_adventurer, Vector2.Zero, 0.0f, new Vector2(3, 3));
+    int scale = 3;
+    // highlight-next-line
+    _spriteBatch.Draw(_adventurer, _adventurer.Origin * scale, 0, new Vector2(scale));
     _spriteBatch.End();
 
     base.Draw(gameTime);
