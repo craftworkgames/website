@@ -9,103 +9,19 @@ description: 2D grid-based collision system.
 This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find outdated information, [please open an issue](https://github.com/craftworkgames/craftworkgames.github.io/issues).
 :::
 
-## Collision basics
+## Requirements
 
 To use the Collision code, you need to perform the following 4 steps:
 1. Create a class that implements the `ICollisionActor` interface.
-1. Implement the `OnCollision` method in your class.  This defines what happens when something hits your object.
-1. Create a `CollisionComponent` instance defining the bounds of your world.
+1. Implement the `OnCollision` method in the class created in step 1.  This defines what happens when something hits your object.
+1. Create an instance of `CollisionComponent` which defines the bounds where collisions are checked.
 1. `Insert` an instance of your class into the CollisionComponent.
-
-The [Full Example](#full-example) uses an extra Interface IEntity that's optional but can be helpful.
-
-## Detailed Explanation
-
-There are a few different items that belong to the collision Namespace.
-1. Space Algorithms
-1. Layer
-1. CollisionComponent
-1. ICollisionActor
-
-You don't need to understand them in detail to use them.  Below are high level explanations of each.
-
-You may skip to the [Full Example](#full-example) section and ignore these details if you wish.
-
-### Space Algorithms
-
-(Advanced/Optional: You don't need to create one of these, this is just explaining how things work behind the scenes.  Skip to the [Full Example](#full-example) for the bare minimum.)
-
-Currently there are 2 Space Algorithms implemented:
-1. `QuadTree`
-1. `SpatialHash`
-
-#### Space Algorithms: QuadTree
-
-A `QuadTree` is a data structure that starts off with a single rectangular area.  Entities are added, and if they reach the maximum number for that rectangular area (25 by default), the area is split up into 4 equal size parts or Quadrants.  This can continue until the maximum depth is reached (7 by default).
-
-The benefit is that you reduce the number of entities you have to check collisions on, since you keep partitioning the screen into smaller and smaller sets of entities.
-
-The management class is `QuadTreeSpace` which uses the `QuadTree`.
-
-Example creation of a QuadTreeSpace:
-```csharp
-QuadTreeSpace quadTreeSpace = new QuadTreeSpace(new RectangleF(x, y, width, height));
-```
-See [QuadTrees](https://en.wikipedia.org/wiki/Quadtree) on Wikipedia for generic more information.
-
-#### Space Algorithms: SpatialHash
-
-Think of mipmaps or approximations.  The screen is split up into N sections, and the object is either in that large section or not.
-
-Example creation of a SpatialHash:
-```csharp
-SpatialHash shash = new SpatialHash(new Vector2(32, 32));
-```
-See [Spatial Hashing](https://www.gamedev.net/tutorials/programming/general-and-gameplay-programming/spatial-hashing-r2697/) on GameDev.
-
-### Layer
-
-(Advanced/Optional: First you do not need to even create a layer, this is just explaining how things work behind the scenes.  Skip to the [Full Example](#full-example) for the bare minimum.)
-
-You can create a Layer and `Insert` "entities" (Instances of classes that extend `ICollisionAgent`).  Once you've added the entities, you can `Add` the Layer into a `CollisionComponent`.  Additionally, you may also add the layer without entities, so long as in your `ICollisionAgent` class you override the `LayerName` property so you can modify it to match the name of the layer you pass into the `CollisionComponent`.
-
-```csharp
-QuadTreeSpace quadTreeSpace = new QuadTreeSpace(new RectangleF(x, y, width, height));
-Layer myQuadLayer = new Layer(quadTreeSpace);
-// or
-SpatialHash shash = new SpatialHash(new Vector2(32, 32));
-Layer mySHashLayer = new Layer(shash);
-```
-
-### CollisionComponent
-
-(Needed: You will need to create one instance of this.)
-
-This is the main driver that manages the collide-able entities.  This class passes the entities position updates down to the Space Algorithm.  Finally it does the collision checks between entities in layers.  All entities in each layer are always checked against the entities in the default layer.  
-
-If you `Insert` entities into the `CollisionComponent`, it inserts them to a default layer, named appropriately "default".  `CollisionComponent` uses a `QuadTree` in the Default layer.  However if you create your own Layer, you can use a `SpatialHash` instead.
-
-This allows you to add layers where you don't want certain elements to interact with each-other by adding them to different layers.  For instance if your game has a water layer, ground layer, and sky layer.  Each of those would only compare objects against the default layer.  
-
-Entities within the same layer are not compared against each-other, except the default layer.
-
-Comparisons are done:
-1. `default` against `default`
-1. `default` against `N layer` (Where "N layer" is any layer added via `CollisionComponent.Add`)
-
-Example creating a CollisionComponent and replacing the default layer with "ground":
-```csharp
-// See above under Layers for details on creating a Layer
-CollisionComponent collisionComponent = new CollisionComponent("ground", myQuadLayer); 
-```
 
 ### ICollisionActor
 
-(Needed: You will need to create a class that implements this.)
-
 This is an interface you need to create a class from and implement the method and override the properties.  At minimum you need to implement `OnCollision` and override `Bounds` so you can provide the rectangle that is used to perform collision detection.
 
-In the below example, you can see that `LayerName` overrides the interfaces implementation so we can state the layer this entity will belong to.
+In the below example, you can see that `LayerName` overrides the interfaces implementation so we can state the layer this entity will belong to.  `Layers` are discussed in the [Advanced Topics](#advanced-topics-optional) section at the bottom.
 
 The `OnCollision` method was implemented and simply reverses the direction of object by flipping it's velocity and moving it back the way it came.
 
@@ -133,13 +49,31 @@ public class MyEntity : ICollisionActor
 }
 ```
 
+### CollisionComponent
 
+This is the main driver that manages the collide-able entities.  This class passes the entities position updates down to the [`Space Algorithm`](#space-algorithms).  Finally it does the collision checks between entities in layers.  All entities in each layer are always checked against the entities in the default layer.  
+
+If you `Insert` entities into the `CollisionComponent`, it inserts them to a default layer, named appropriately "default".  `CollisionComponent` uses a `QuadTree` in the Default layer.  However if you create your own Layer, you can use a `SpatialHash` instead.
+
+This allows you to add layers where you don't want certain elements to interact with each-other by adding them to different layers.  For instance if your game has a water layer, ground layer, and sky layer.  Each of those would only compare objects against the default layer.  
+
+Entities within the same layer are not compared against each-other, except the default layer.
+
+Comparisons are done:
+1. `default` against `default`
+1. `default` against `N layer` (Where "N layer" is any layer added via `CollisionComponent.Add`)
+
+Example creating a CollisionComponent and replacing the default layer with "ground":
+```csharp
+// See Layers below under Advanced Topics for details on creating a Layer
+CollisionComponent collisionComponent = new CollisionComponent("ground", myQuadLayer); 
+```
 
 ## Full Example
 
 In this example, we will make a simple sandbox where shapes can move and collide with each other.
 
-We start by defining an `IEntity` interface that inherits `ICollisionActor`, so we can insert the entities into our `CollisionComponent`.
+We start by defining an `IEntity` interface that inherits `ICollisionActor`, so we can insert the entities into our `CollisionComponent`.  This is optional, but has benefits.
 
 ```csharp
 public interface IEntity : ICollisionActor
@@ -152,27 +86,22 @@ public interface IEntity : ICollisionActor
 Next, we define our entity classes
 
 The `OnCollision` method and the Bounds property come from the `ICollisionActor` interface. These will be called by the `CollisionComponent`.
-:::note[notice]
-The RandomizeVector method will give a warning/error, this will be resolved in the "Setting up the game" section when you add the Random variable to the Game1.cs file.
-:::
 
 ```csharp
 public class CubeEntity : IEntity
 {
-    private readonly Game1 _game;
     public Vector2 Velocity;
     public IShapeF Bounds { get; }
 
-    public CubeEntity(Game1 game, RectangleF rectangleF)
+    public CubeEntity(RectangleF rectangleF)
     {
-        _game = game;
         Bounds = rectangleF;
         RandomizeVelocity();
     }
 
     public virtual void Draw(SpriteBatch spriteBatch)
     {
-        spriteBatch.DrawRectangle((RectangleF) Bounds, Color.Red, 3);
+        spriteBatch.DrawRectangle((RectangleF)Bounds, Color.Red, 3);
     }
 
     public virtual void Update(GameTime gameTime)
@@ -189,27 +118,25 @@ public class CubeEntity : IEntity
 
     private void RandomizeVelocity()
     {
-        Velocity.X = _game.Random.Next(-1, 2);
-        Velocity.Y = _game.Random.Next(-1, 2);
+        Velocity.X = Random.Shared.Next(-1, 2);
+        Velocity.Y = Random.Shared.Next(-1, 2);
     }
 }
 
 public class BallEntity : IEntity
 {
-    private readonly Game1 _game;
     public Vector2 Velocity;
     public IShapeF Bounds { get; }
 
-    public BallEntity(Game1 game, CircleF circleF)
+    public BallEntity(CircleF circleF)
     {
-        _game = game;
         Bounds = circleF;
         RandomizeVelocity();
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        spriteBatch.DrawCircle((CircleF) Bounds, 8, Color.Red, 3f);
+        spriteBatch.DrawCircle((CircleF)Bounds, 8, Color.Red, 3f);
     }
 
     public void Update(GameTime gameTime)
@@ -226,8 +153,8 @@ public class BallEntity : IEntity
 
     private void RandomizeVelocity()
     {
-        Velocity.X = _game.Random.Next(-1, 2);
-        Velocity.Y = _game.Random.Next(-1, 2);
+        Velocity.X = Random.Shared.Next(-1, 2);
+        Velocity.Y = Random.Shared.Next(-1, 2);
     }
 }
 ```
@@ -237,7 +164,6 @@ public class BallEntity : IEntity
 First, we define our properties and fields
 
 ```csharp
-public readonly Random Random = new Random(Guid.NewGuid().GetHashCode());
 private readonly List<IEntity> _entities = new List<IEntity>();
 private readonly CollisionComponent _collisionComponent;
 const int MapWidth = 500;
@@ -267,15 +193,15 @@ protected override void Initialize()
     // Create some objects to use in the collision demo
     for (var i = 0; i < 50; i++)
     {
-        var size = Random.Next(20, 40);
-        var position = new Vector2(Random.Next(-MapWidth, MapWidth * 2), Random.Next(0, MapHeight));
+        var size = Random.Shared.Next(20, 40);
+        var position = new Vector2(Random.Shared.Next(-MapWidth, MapWidth * 2), Random.Shared.Next(0, MapHeight));
         if (i % 2 == 0)
         {
-            _entities.Add(new BallEntity(this, new CircleF(position, size)));
+            _entities.Add(new BallEntity(new CircleF(position, size)));
         }
         else
         {
-            _entities.Add(new CubeEntity(this, new RectangleF(position, new SizeF(size, size))));
+            _entities.Add(new CubeEntity(new RectangleF(position, new SizeF(size, size))));
         }
     }
 
@@ -326,6 +252,50 @@ protected override void Draw(GameTime gameTime)
 }
 ```
 
-## Result
+### Result
 
 ![collision](collision.gif)
+
+## Advanced Topics (Optional)
+
+### Space Algorithms
+
+Currently there are 2 Space Algorithms implemented:
+1. `QuadTree`
+1. `SpatialHash`
+
+#### Space Algorithms: QuadTree
+
+A `QuadTree` is a data structure that starts off with a single rectangular area.  Entities are added, and if they reach the maximum number for that rectangular area (25 by default), the area is split up into 4 equal size parts or Quadrants.  This can continue until the maximum depth is reached (7 by default).
+
+The benefit is that you reduce the number of entities you have to check collisions on, since you keep partitioning the screen into smaller and smaller sets of entities.
+
+The management class is `QuadTreeSpace` which uses the `QuadTree`.
+
+Example creation of a QuadTreeSpace:
+```csharp
+QuadTreeSpace quadTreeSpace = new QuadTreeSpace(new RectangleF(x, y, width, height));
+```
+See [QuadTrees](https://en.wikipedia.org/wiki/Quadtree) on Wikipedia for generic more information.
+
+#### Space Algorithms: SpatialHash
+
+Think of mipmaps or approximations.  The screen is split up into N sections, and the object is either in that large section or not.
+
+Example creation of a SpatialHash:
+```csharp
+SpatialHash shash = new SpatialHash(new Vector2(32, 32));
+```
+See [Spatial Hashing](https://www.gamedev.net/tutorials/programming/general-and-gameplay-programming/spatial-hashing-r2697/) on GameDev.
+
+### Layer
+
+You can create a Layer and `Insert` "entities" (Instances of classes that extend `ICollisionAgent`).  Once you've added the entities, you can `Add` the Layer into a `CollisionComponent`.  Additionally, you may also add the layer without entities, so long as in your `ICollisionAgent` class you override the `LayerName` property so you can modify it to match the name of the layer you pass into the `CollisionComponent`.
+
+```csharp
+QuadTreeSpace quadTreeSpace = new QuadTreeSpace(new RectangleF(x, y, width, height));
+Layer myQuadLayer = new Layer(quadTreeSpace);
+// or
+SpatialHash shash = new SpatialHash(new Vector2(32, 32));
+Layer mySHashLayer = new Layer(shash);
+```
