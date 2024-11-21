@@ -15,17 +15,40 @@ This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find o
 
 `System.IO.Stream ContentManager.OpenStream(string filename)`
 
-**OpenStream** allows easy access to `TitleContainer.OpenStream` so you can use the `Game.Content` object to load compiled resources *and* included resources.
+**OpenStream** allows easy access to load data from files.  Files loaded this way should be in the content folder defined by `Content.RootDirectory`.
 
 Example below loads a text file "song-lyrics" directly.  This file is assumed to have it's properties set to "Copy to Output Directory".
 ```csharp
-// song-lyrics.txt is in the Content Directory
-var stream = Content.OpenStream("song-lyrics.txt");
-var reader = new StreamReader(stream);
-string songLyrics = reader.ReadToEnd();
+// Put this in your Game1 class
+private string songLyrics;
+```
 
-reader.Close();
-stream.Close();
+```csharp
+// Put this in your Initialize() method
+// song-lyrics.txt is in the Content Directory
+using (var stream = Content.OpenStream("song-lyrics.txt"))
+{
+    using (var reader = new StreamReader(stream))
+    {
+        songLyrics = reader.ReadToEnd();
+    }
+}
+```
+
+In this next example, it is loading a PNG file, and creating a `Texture2D` from that stream.  This file is also assumed to have it's properties set to "Copy to Output Directory".
+
+```csharp
+// Put this in your Game1 class
+private Texture2D monoTextureManual;
+```
+
+```csharp
+// Put this in your Initialize() method
+// extendedlogo.png is in the Content Directory
+using (var stream = Content.OpenStream("extendedlogo.png"))
+{
+    monoTextureManual = Texture2D.FromStream(GraphicsDevice, stream);
+}
 ```
 
 ## ContentManager.GetGraphicsDevice
