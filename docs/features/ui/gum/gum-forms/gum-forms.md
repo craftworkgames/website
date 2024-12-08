@@ -8,16 +8,26 @@ description: An example document for gum
 :::tip[Up to date]
 This page is **up to date** for MonoGame.Extended `@mgeversion@`.  If you find outdated information, [please open an issue](https://github.com/craftworkgames/craftworkgames.github.io/issues).
 :::
-s
-Gum Forms provides a collection of flexible, fully customizable controls which can be added to your project with just a few lines of code. This document provides setup and an introduction to using Gum forms controls. For full documentation see the [Gum Forms documentation](https://docs.flatredball.com/gum/monogame/gum-forms).
+Gum Forms provides a collection of flexible, fully customizable controls which can be added to your project with just a few lines of code. 
+
+Gum includes a number of solutions for UI:
+
+* Gum Forms - a collection of controls such as Button, ListBox, and TextBox. These are typical elements which you might find in other UI libraries such as WPF or .NET MAUI.
+* Gum Tool - WYSIWYG editor for creating UI. The Gum tool allows you to visually place both Gum Forms objects and non-interactive elements such as labels, sprites, and nine slices.
+* Gum Runtime Library - A NuGet package which includes logic for loading Gum projects and interacting with objects in code.
+
+You can use Gum with the Gum UI tool or code-only. Both approaches are fully supported.
+
+This document provides setup and an introduction to using Gum forms controls purely in code. For full documentation see the [Gum Forms documentation](https://docs.flatredball.com/gum/monogame/gum-forms).
 
 ## Setup
 
+Before using Gum, you must add the Gum.MonoGame [nuget package](https://www.nuget.org/packages/Gum.MonoGame) to your project.
+
 Gum Forms uses the following objects for initialization, updating, and drawing:
 
-* FormsUtilities - provides defaults, initialization, and every-frame logic for all forms objects. 
-* SystemManagers - provides logic and rendering for the visuals for forms elements.
-* GraphicalUiElement - root object for all forms objects. 
+* GumService - provides defaults, initialization, every-frame logic, and drawing for all forms objects. 
+* GraphicalUiElement - the base class for all Gum visual objects. The root is passed to GumService.Update so that it can perform every-frame logic on Forms objects, such as detecting clicks. 
 
 The following code shows a single Gum Forms button in an otherwise empty Game1 class:
 
@@ -36,28 +46,28 @@ public class Game1 : Game
     {
         _graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
+        // So we can interact with the UI
         IsMouseVisible = true;
     }
 
     protected override void Initialize()
     {
-        SystemManagers.Default = new SystemManagers(); 
-        SystemManagers.Default.Initialize(_graphics.GraphicsDevice, fullInstantiation: true);
-        FormsUtilities.InitializeDefaults();
+        var gumProject = MonoGameGum.GumService.Default.Initialize(
+            this.GraphicsDevice);
 
         Root = new ContainerRuntime();
         Root.Width = 0;
         Root.Height = 0;
         Root.WidthUnits = Gum.DataTypes.DimensionUnitType.RelativeToContainer;
         Root.HeightUnits = Gum.DataTypes.DimensionUnitType.RelativeToContainer;
-        Root.AddToManagers();
+        Root.AddToManagers(SystemManagers.Default, null);
 
 
         var button = new Button();
         Root.Children.Add(button.Visual);
         button.X = 50;
         button.Y = 50;
-        button.Width = 100;
+        button.Width = 200;
         button.Height = 50;
         button.Text = "Hello MonoGame.Extended!";
         int clickCount = 0;
@@ -71,15 +81,14 @@ public class Game1 : Game
 
     protected override void Update(GameTime gameTime)
     {
-        FormsUtilities.Update(gameTime, Root);
-        SystemManagers.Default.Activity(gameTime.TotalGameTime.TotalSeconds);
+        MonoGameGum.GumService.Default.Update(this, gameTime, Root);
         base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        SystemManagers.Default.Draw();
+        MonoGameGum.GumService.Default.Draw();
         base.Draw(gameTime);
     }
 }
@@ -90,7 +99,7 @@ The code above shows how to create a Button and add it to the Root object which 
 
 ## Button
 
-The Button is a control providing an event for handling clicks. Button objects can also display Text to the user which can be modified through the String property.
+The Button is a control providing an event for handling clicks. Button objects can also display Text to the user which can be modified through their Text property.
 
 The following code adds a button which increments every time it is clicked:
 
@@ -99,9 +108,9 @@ var button = new Button();
 Root.Children.Add(button.Visual);
 button.X = 0;
 button.Y = 0;
-button.Width = 100;
+button.Width = 200;
 button.Height = 50;
-button.Text = "Hello MonoGame!";
+button.Text = "Hello MonoGame.Extended!";
 int clickCount = 0;
 button.Click += (_, _) =>
 {
