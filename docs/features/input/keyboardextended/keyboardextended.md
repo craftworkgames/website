@@ -34,18 +34,18 @@ protected override void Update(GameTime gameTime)
 {
     KeyboardExtended.Update();
     // highlight-next-line
-    KeyboardExtendedState keyboardState = KeyboardExtended.GetState();
+    KeyboardStateExtended keyboardState = KeyboardExtended.GetState();
 }
 ```
 
-## Using `KeyboardExtendedState`
+## Using `KeyboardStateExtended`
 At any time, you can call `KeyboardExtended.GetState()` to get the `KeyboardStateExtended` struct.  This struct is an extended version of the base MonoGame `KeyboardState` that provides utility for checking keyboard states between the previous and current frame.  By providing this utility, you can not only check if a key is down, but also check for single frame presses of a key.
 
 ```cs
 protected override void Update(GameTime gameTime)
 {
     KeyboardExtended.Update();
-    KeyboardExtendedState keyboardState = KeyboardExtended.GetState();
+    KeyboardStateExtended keyboardState = KeyboardExtended.GetState();
 
 
     // highlight-next-line
